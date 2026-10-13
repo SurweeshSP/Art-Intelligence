@@ -9,8 +9,10 @@ import streamlit as st
 
 # Ensure aoia package is discoverable whether started from repo root or aoia directory
 _current_dir = Path(__file__).resolve().parent
-if str(_current_dir) not in sys.path:
-    sys.path.insert(0, str(_current_dir))
+_repo_dir = _current_dir.parent
+for _p in (_current_dir, _repo_dir):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 
 from aoia import db, pipeline, registry, health, exports, unresolved
 from aoia.models import Opportunity
