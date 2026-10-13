@@ -1,0 +1,4718 @@
+# AOIA source registry v4 - FINE ARTS ONLY  (generated 2026-10-12)
+# - sources:               every entry has base_url. enabled:false = kept but not crawled for ranked opportunities.
+# - unresolved_sources:    in your list but no official URL could be confirmed. The app must resolve each via
+#                          `discovery_queries`, run the health gate, then PROMOTE it to `sources` (never guess a URL).
+# - geo_basis: registry -> organiser's own site, geo may fall back to country/city here.
+#              text     -> directories / media: the item's OWN text decides geo (else UNKNOWN, never INTERNATIONAL).
+# - channel_role: organiser | funder | venue (gallery) | sales (marketplace/auction) | discovery (directory/media)
+# - career_level (beginner|intermediate|standard) = suitability tier from your list; *_confidence low where the
+#   pasted table was misaligned.  origin: user_doc | user_list | web_search_seen | assistant_candidate.
+# - verification stays PENDING until the health gate runs (nothing here was live-fetched).
+defaults:
+  crawl_depth: 2
+  max_pages_per_source: 60
+  per_domain_delay_seconds: 2
+  anchor_vocab:
+    [
+      open call,
+      call for entries,
+      call for applications,
+      apply,
+      application,
+      residency,
+      fellowship,
+      scholarship,
+      grant,
+      financial assistance,
+      award,
+      prize,
+      competition,
+      commission,
+      exhibition,
+      notice,
+      announcement,
+      circular,
+      entries invited,
+      regional centre,
+      submission,
+    ]
+  anchor_vocab_negative:
+    [
+      about,
+      contact,
+      login,
+      admin,
+      sitemap,
+      gallery,
+      library,
+      publication,
+      tender,
+      recruitment,
+      rti,
+      shop,
+      donate,
+      sale,
+      auction,
+    ]
+medium_filter:
+  include:
+    - painting
+    - drawing
+    - sculpture
+    - printmaking
+    - print making
+    - ceramics
+    - ceramic
+    - installation
+    - mixed media
+    - textile art
+    - fibre art
+    - mural
+    - public art
+    - contemporary art
+    - visual art
+    - fine art
+    - collage
+    - assemblage
+    - video art
+  exclude:
+    - photography
+    - photo
+    - photographer
+    - photobook
+    - film
+    - cinema
+    - documentary
+    - music
+    - dance
+    - theatre
+    - theater
+    - drama
+    - literature
+    - poetry
+    - fashion
+    - graphic design
+    - architecture
+    - animation
+  rule:
+    keep a record if it matches >=1 include term AND is not exclusively matched by exclude terms; photography-only calls are dropped; multi-disciplinary
+    calls that name a fine-arts medium are kept.
+sources:
+  - source_id: lalit_kala_akademi
+    name: Lalit Kala Akademi (HQ + Regional Centre Chennai)
+    region: india
+    authority_tier: T0
+    base_url: https://lalitkala.gov.in/
+    source_type: government
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://lalitkala.gov.in/event_details/339
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    seed_anchor_labels:
+      - Regional Centres > Chennai
+      - Exhibitions
+      - Research & Scholarship
+      - Grants & Financial Assistance
+      - National Exhibition of Art
+    detail_url_patterns:
+      - /event_details/{id}
+    detail_id_probe:
+      seen:
+        - 339
+      window: 50
+    career_level:
+      - any
+    regional_centres:
+      - Bhubaneswar
+      - Chennai
+      - Garhi
+      - Kolkata
+      - Lucknow
+      - NERC Agartala
+      - Ahmedabad
+  - source_id: dakshinachitra
+    name: DakshinaChitra
+    region: chennai
+    authority_tier: T0
+    base_url: https://www.dakshinachitra.net/
+    source_type: museum
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: govt_museum_chennai
+    name: Government Museum Chennai
+    region: chennai
+    authority_tier: T0
+    base_url: https://govtmuseumchennai.org/
+    source_type: museum
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: iaf_noticeboard
+    name: India Art Fair Noticeboard
+    region: india
+    authority_tier: T0
+    base_url: https://indiaartfair.in/noticeboard
+    source_type: platform
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://indiaartfair.in/noticeboard/<slug>
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    detail_url_patterns:
+      - /noticeboard/{slug}
+    listing_urls:
+      - https://indiaartfair.in/noticeboard
+    career_level:
+      - any
+  - source_id: goethe_chennai
+    name: Goethe-Institut Chennai (Max Mueller Bhavan)
+    region: chennai
+    authority_tier: T0
+    base_url: https://www.goethe.de/ins/in/en/sta/che.html
+    source_type: cultural_institute
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://www.goethe.de/en/kul/foe/tfw.html
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: alliance_francaise_madras
+    name: Alliance Francaise of Madras
+    region: chennai
+    authority_tier: T0
+    base_url: https://www.afchennai.org/
+    source_type: cultural_institute
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: upenn_chennai_residency
+    name: Penn Institute for Advanced Study in India - Chennai artist residency
+    region: chennai
+    authority_tier: T0
+    base_url: https://southasiacenter.upenn.edu/node/3205
+    source_type: residency
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: web_search_seen
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: cpb_foundation
+    name: Chennai Photo Biennale Foundation
+    region: chennai
+    authority_tier: T0
+    base_url: https://chennaiphotobiennale.foundation/
+    source_type: festival
+    fine_arts_fit: LOW
+    discovery_only: false
+    enabled: false
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://opencall.chennaiphotobiennale.com/
+      - https://chennaiphotobiennale.com/
+    disabled_reason: "Disabled: photography is out of scope. Re-enable only if you want photo-based art."
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - standard
+    career_level_confidence: low
+  - source_id: kalakshetra
+    name: Kalakshetra Foundation
+    region: chennai
+    authority_tier: T0
+    base_url: https://kalakshetra.in/
+    source_type: institute
+    fine_arts_fit: LOW
+    discovery_only: false
+    enabled: false
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    disabled_reason: "Disabled: performing arts. Enable only for its fine-arts/craft courses."
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: india_ifa
+    name: India Foundation for the Arts (IFA)
+    region: india
+    authority_tier: T0
+    base_url: https://indiaifa.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Bengaluru
+    state: Karnataka
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: khoj
+    name: KHOJ Studios
+    region: india
+    authority_tier: T0
+    base_url: https://khojstudios.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: serendipity
+    name: Serendipity Arts Foundation
+    region: india
+    authority_tier: T0
+    base_url: https://serendipityarts.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: kochi_biennale
+    name: Kochi-Muziris Biennale Foundation
+    region: india
+    authority_tier: T0
+    base_url: https://www.kochimuzirisbiennale.org/
+    source_type: biennale
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Kochi
+    state: Kerala
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - standard
+  - source_id: inlaks
+    name: Inlaks Shivdasani Foundation
+    region: india
+    authority_tier: T0
+    base_url: https://www.inlaksfoundation.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: Mumbai
+    state: Maharashtra
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: charles_wallace
+    name: Charles Wallace India Trust
+    region: india
+    authority_tier: T0
+    base_url: https://www.charleswallaceindiatrust.com/
+    source_type: foundation
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://www.charleswallaceindiatrust.com/latest
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    listing_urls:
+      - https://www.charleswallaceindiatrust.com/latest
+    career_level:
+      - any
+  - source_id: raza_foundation
+    name: Raza Foundation
+    region: india
+    authority_tier: T0
+    base_url: https://razafoundation.org/
+    source_type: foundation
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: ficart
+    name: Foundation for Indian Contemporary Art (FICA)
+    region: india
+    authority_tier: T0
+    base_url: https://ficart.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: gujral_foundation
+    name: The Gujral Foundation
+    region: india
+    authority_tier: T0
+    base_url: https://thegujralfoundation.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: sarmaya
+    name: Sarmaya Arts Foundation
+    region: india
+    authority_tier: T1
+    base_url: https://sarmaya.in/
+    source_type: foundation
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Mumbai
+    state: Maharashtra
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: map_india
+    name: Museum of Art & Photography (MAP), Bengaluru
+    region: india
+    authority_tier: T0
+    base_url: https://map-india.org/
+    source_type: museum
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Bengaluru
+    state: Karnataka
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: ngma
+    name: National Gallery of Modern Art
+    region: india
+    authority_tier: T0
+    base_url: https://ngmaindia.gov.in/
+    source_type: government
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: india_art_fair
+    name: India Art Fair
+    region: india
+    authority_tier: T0
+    base_url: https://indiaartfair.in/
+    source_type: festival
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - beginner
+      - intermediate
+  - source_id: terrain
+    name: Terrain Art
+    region: india
+    authority_tier: T0
+    base_url: https://www.terrain.art/
+    source_type: platform
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: moc_india
+    name: Ministry of Culture, Government of India
+    region: india
+    authority_tier: T0
+    base_url: https://culture.gov.in/
+    source_type: government
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: iccr
+    name: Indian Council for Cultural Relations
+    region: india
+    authority_tier: T0
+    base_url: https://iccr.gov.in/
+    source_type: government
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: ccrt
+    name: CCRT India
+    region: india
+    authority_tier: T0
+    base_url: https://ccrtindia.gov.in/
+    source_type: government
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: british_council_in
+    name: British Council India
+    region: india
+    authority_tier: T0
+    base_url: https://www.britishcouncil.in/
+    source_type: cultural_institute
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: goethe_india
+    name: Goethe-Institut India
+    region: india
+    authority_tier: T0
+    base_url: https://www.goethe.de/ins/in/en/
+    source_type: cultural_institute
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: ifindia
+    name: Institut francais en Inde
+    region: india
+    authority_tier: T0
+    base_url: https://ifindia.in/
+    source_type: cultural_institute
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: nl_india
+    name: Embassy of the Netherlands in India
+    region: india
+    authority_tier: T0
+    base_url: https://www.netherlandsandyou.nl/web/india
+    source_type: government
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: web_search_seen
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: snu_residency
+    name: Shiv Nadar University - Artist in Residence
+    region: india
+    authority_tier: T0
+    base_url: https://snu.edu.in/events/
+    source_type: university
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: web_search_seen
+    country: IN
+    city: Greater Noida
+    state: Uttar Pradesh
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: sangeet_natak
+    name: Sangeet Natak Akademi
+    region: india
+    authority_tier: T0
+    base_url: https://sangeetnatak.gov.in/
+    source_type: government
+    fine_arts_fit: LOW
+    discovery_only: false
+    enabled: false
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    disabled_reason: "Disabled: not fine arts."
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: sahitya_akademi
+    name: Sahitya Akademi
+    region: india
+    authority_tier: T0
+    base_url: https://sahitya-akademi.gov.in/
+    source_type: government
+    fine_arts_fit: LOW
+    discovery_only: false
+    enabled: false
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    disabled_reason: "Disabled: not fine arts."
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: nsd
+    name: National School of Drama
+    region: india
+    authority_tier: T0
+    base_url: https://nsd.gov.in/
+    source_type: government
+    fine_arts_fit: LOW
+    discovery_only: false
+    enabled: false
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    disabled_reason: "Disabled: not fine arts."
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: artconnect
+    name: ArtConnect
+    region: international
+    authority_tier: T1
+    base_url: https://www.artconnect.com/
+    source_type: directory
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: transartists
+    name: TransArtists
+    region: international
+    authority_tier: T1
+    base_url: https://www.transartists.org/
+    source_type: directory
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: on_the_move
+    name: On the Move
+    region: international
+    authority_tier: T1
+    base_url: https://on-the-move.org/
+    source_type: network
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://on-the-move.org/regions/india
+      - https://on-the-move.org/regions/southern-asia
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    listing_urls:
+      - https://on-the-move.org/regions/india
+      - https://on-the-move.org/regions/southern-asia
+    career_level:
+      - any
+  - source_id: asef_culture360
+    name: ASEF Culture360
+    region: international
+    authority_tier: T1
+    base_url: https://culture360.asef.org/
+    source_type: network
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: res_artis
+    name: Res Artis
+    region: international
+    authority_tier: T1
+    base_url: https://resartis.org/
+    source_type: network
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artist_communities_alliance
+    name: Artist Communities Alliance
+    region: international
+    authority_tier: T1
+    base_url: https://artistcommunities.org/
+    source_type: network
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: residency_unlimited
+    name: Residency Unlimited
+    region: international
+    authority_tier: T1
+    base_url: https://residencyunlimited.org/
+    source_type: network
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artdeadline
+    name: ArtDeadline.com
+    region: international
+    authority_tier: T2
+    base_url: https://artdeadline.com/
+    source_type: directory
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 1440
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: themesh
+    name: The Mesh (themesh.art)
+    region: international
+    authority_tier: T2
+    base_url: https://themesh.art/
+    source_type: directory
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 1440
+    verification: PENDING
+    origin: web_search_seen
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: rivet_calls
+    name: Rivet Calls
+    region: international
+    authority_tier: T2
+    base_url: https://rivet.es/calls
+    source_type: directory
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 1440
+    verification: PENDING
+    origin: web_search_seen
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artistsatrisk
+    name: Artists at Risk
+    region: international
+    authority_tier: T1
+    base_url: https://artistsatrisk.org/
+    source_type: network
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 80
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: culture_moves_europe
+    name: Culture Moves Europe
+    region: international
+    authority_tier: T0
+    base_url: https://culture.ec.europa.eu/
+    source_type: government
+    fine_arts_fit: MED
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: EU
+    city: null
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: artrabbit
+    name: ArtRabbit
+    region: international
+    authority_tier: T2
+    base_url: https://www.artrabbit.com/
+    source_type: directory
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 1440
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artjobs
+    name: Art Jobs
+    region: international
+    authority_tier: T2
+    base_url: https://www.artjobs.org/
+    source_type: directory
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 1440
+    verification: PENDING
+    origin: user_doc
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: rhizome
+    name: Rhizome
+    region: international
+    authority_tier: T2
+    base_url: https://rhizome.org/
+    source_type: publication
+    fine_arts_fit: LOW
+    discovery_only: true
+    enabled: false
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 1440
+    verification: PENDING
+    origin: user_doc
+    disabled_reason: "Disabled by default: new media; enable if wanted."
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: asian_cultural_council
+    name: Asian Cultural Council
+    region: international
+    authority_tier: T0
+    base_url: https://asianculturalcouncil.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: New York
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: delfina
+    name: Delfina Foundation
+    region: international
+    authority_tier: T0
+    base_url: https://www.delfinafoundation.com/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: GB
+    city: London
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: gasworks
+    name: Gasworks
+    region: international
+    authority_tier: T0
+    base_url: https://www.gasworks.org.uk/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: GB
+    city: London
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: akademie_solitude
+    name: Akademie Schloss Solitude
+    region: international
+    authority_tier: T0
+    base_url: https://www.akademie-solitude.de/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: DE
+    city: Stuttgart
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: cite_des_arts
+    name: Cite internationale des arts
+    region: international
+    authority_tier: T0
+    base_url: https://www.citedesartsparis.net/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: FR
+    city: Paris
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: sharjah_art_foundation
+    name: Sharjah Art Foundation
+    region: international
+    authority_tier: T0
+    base_url: https://sharjahart.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: AE
+    city: Sharjah
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: art_jameel
+    name: Art Jameel
+    region: international
+    authority_tier: T0
+    base_url: https://artjameel.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: AE
+    city: Dubai
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: prince_claus_fund
+    name: Prince Claus Fund
+    region: international
+    authority_tier: T0
+    base_url: https://princeclausfund.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: NL
+    city: Amsterdam
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: mondriaan_fund
+    name: Mondriaan Fund
+    region: international
+    authority_tier: T0
+    base_url: https://www.mondriaanfonds.nl/
+    source_type: government
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: NL
+    city: Amsterdam
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: pollock_krasner
+    name: Pollock-Krasner Foundation
+    region: international
+    authority_tier: T0
+    base_url: https://pkf.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: New York
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: creative_capital
+    name: Creative Capital
+    region: international
+    authority_tier: T0
+    base_url: https://creative-capital.org/
+    source_type: foundation
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: New York
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: macdowell
+    name: MacDowell
+    region: international
+    authority_tier: T0
+    base_url: https://www.macdowell.org/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: Peterborough
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: yaddo
+    name: Yaddo
+    region: international
+    authority_tier: T0
+    base_url: https://yaddo.org/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: Saratoga Springs
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: headlands
+    name: Headlands Center for the Arts
+    region: international
+    authority_tier: T0
+    base_url: https://www.headlands.org/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: Sausalito
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: banff_centre
+    name: Banff Centre
+    region: international
+    authority_tier: T0
+    base_url: https://www.banffcentre.ca/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: CA
+    city: Banff
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: vermont_studio_center
+    name: Vermont Studio Center
+    region: international
+    authority_tier: T0
+    base_url: https://vermontstudiocenter.org/
+    source_type: residency
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: US
+    city: Johnson
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: pro_helvetia
+    name: Pro Helvetia
+    region: international
+    authority_tier: T0
+    base_url: https://prohelvetia.ch/
+    source_type: government
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: assistant_candidate
+    country: CH
+    city: Zurich
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: sam_singapore
+    name: Singapore Art Museum
+    region: international
+    authority_tier: T0
+    base_url: https://www.singaporeartmuseum.sg/
+    source_type: museum
+    fine_arts_fit: HIGH
+    discovery_only: false
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 90
+    crawl_interval_minutes: 720
+    verification: PENDING
+    origin: user_doc
+    country: SG
+    city: Singapore
+    geo_basis: registry
+    channel_role: organiser
+    crawl_depth: 2
+    max_pages_per_source: 60
+    career_level:
+      - any
+  - source_id: hyperallergic_opps
+    name: Hyperallergic - Opportunities (monthly roundup)
+    region: international
+    authority_tier: T2
+    base_url: https://hyperallergic.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: web_search_seen
+    extra_endpoints:
+      - https://hyperallergic.com/opportunities-in-october-2026
+      - https://hyperallergic.com/opportunities-in-october-2026.md
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    digest_url_patterns:
+      - /opportunities-in-{month}-{year}
+      - /opportunities-in-{month}-{year}.md
+      - /opportunities-{month}-{year}.md
+    expand: digest_items
+    career_level:
+      - any
+  - source_id: the_hindu_art
+    name: The Hindu - Art
+    region: chennai
+    authority_tier: T3
+    base_url: https://www.thehindu.com/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    extra_endpoints:
+      - https://www.thehindu.com/entertainment/art/
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: new_indian_express
+    name: The New Indian Express (Chennai)
+    region: chennai
+    authority_tier: T3
+    base_url: https://www.newindianexpress.com/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: dt_next
+    name: DT Next
+    region: chennai
+    authority_tier: T3
+    base_url: https://www.dtnext.in/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Chennai
+    state: Tamil Nadu
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: indian_express
+    name: The Indian Express
+    region: india
+    authority_tier: T3
+    base_url: https://indianexpress.com/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 50
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: times_of_india
+    name: Times of India - Entertainment/Art
+    region: india
+    authority_tier: T3
+    base_url: https://timesofindia.indiatimes.com/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 50
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Mumbai
+    state: Maharashtra
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: hindustan_times
+    name: Hindustan Times
+    region: india
+    authority_tier: T3
+    base_url: https://www.hindustantimes.com/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 50
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: mint_lounge
+    name: Mint Lounge
+    region: india
+    authority_tier: T3
+    base_url: https://www.livemint.com/mint-lounge
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 50
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: scroll
+    name: Scroll.in
+    region: india
+    authority_tier: T3
+    base_url: https://scroll.in/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 50
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: Mumbai
+    state: Maharashtra
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: ians_life
+    name: IANS Life/Culture
+    region: india
+    authority_tier: T3
+    base_url: https://ianslife.in/
+    source_type: news_media
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 50
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: web_search_seen
+    extra_endpoints:
+      - https://ianslife.in/culture
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: stir_world
+    name: STIRworld
+    region: india
+    authority_tier: T2
+    base_url: https://www.stirworld.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: IN
+    city: New Delhi
+    state: Delhi
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: art_asia_pacific
+    name: ArtAsiaPacific
+    region: international
+    authority_tier: T2
+    base_url: https://artasiapacific.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: ocula
+    name: Ocula
+    region: international
+    authority_tier: T2
+    base_url: https://ocula.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: the_art_newspaper
+    name: The Art Newspaper
+    region: international
+    authority_tier: T2
+    base_url: https://www.theartnewspaper.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artnews
+    name: ARTnews
+    region: international
+    authority_tier: T2
+    base_url: https://www.artnews.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artforum
+    name: Artforum
+    region: international
+    authority_tier: T2
+    base_url: https://www.artforum.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: frieze
+    name: Frieze
+    region: international
+    authority_tier: T2
+    base_url: https://www.frieze.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artreview
+    name: ArtReview
+    region: international
+    authority_tier: T2
+    base_url: https://artreview.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: artnet_news
+    name: Artnet News
+    region: international
+    authority_tier: T2
+    base_url: https://news.artnet.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: contemporary_and
+    name: Contemporary And (C&)
+    region: international
+    authority_tier: T2
+    base_url: https://www.contemporaryand.com/
+    source_type: art_press
+    fine_arts_fit: MED
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: assistant_candidate
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: eflux
+    name: e-flux (announcements)
+    region: international
+    authority_tier: T2
+    base_url: https://www.e-flux.com/
+    source_type: art_press
+    fine_arts_fit: HIGH
+    discovery_only: true
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 65
+    crawl_interval_minutes: 360
+    verification: PENDING
+    origin: user_doc
+    extra_endpoints:
+      - https://www.e-flux.com/announcements/
+    country: GLOBAL
+    city: null
+    geo_basis: text
+    channel_role: discovery
+    crawl_depth: 1
+    max_pages_per_source: 40
+    career_level:
+      - any
+  - source_id: national_scholarship_portal
+    name: National Scholarship Portal
+    region: india
+    authority_tier: T0
+    source_type: government
+    channel_role: funder
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - beginner
+    career_level_confidence: medium
+    list_section: scholarships
+    notes: General education portal; the medium filter keeps only art-related schemes. Low page cap.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://scholarships.gov.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 20
+  - source_id: sanskriti_foundation
+    name: Sanskriti Foundation
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - intermediate
+    career_level_confidence: medium
+    list_section: scholarships
+    notes: Arts/crafts foundation; artist residencies at Sanskriti Kendra.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://sanskritifoundation.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: tata_trusts
+    name: Tata Trusts
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: funder
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - intermediate
+      - standard
+    career_level_confidence: medium
+    list_section: scholarships
+    notes: Grants/fellowships; arts & culture is one of many themes.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://tatatrusts.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: usief_fulbright_nehru
+    name: USIEF (Fulbright-Nehru)
+    region: india
+    authority_tier: T0
+    source_type: government
+    channel_role: funder
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: medium
+    list_section: scholarships
+    notes: Fulbright-Nehru fellowships incl. arts; competitive.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://usief.org.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: chevening
+    name: Chevening Scholarships
+    region: international
+    authority_tier: T0
+    source_type: government
+    channel_role: funder
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: GB
+    city: London
+    career_level:
+      - standard
+    career_level_confidence: medium
+    list_section: scholarships
+    notes: UK government scholarships open to India; filter to arts-related study.
+    verification: PENDING
+    origin: user_list
+    base_url: https://chevening.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: commonwealth_scholarships
+    name: Commonwealth Scholarships (CSC UK)
+    region: international
+    authority_tier: T0
+    source_type: government
+    channel_role: funder
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: GB
+    city: London
+    career_level:
+      - standard
+    career_level_confidence: medium
+    list_section: scholarships
+    notes: UK Commonwealth scholarships; filter to arts.
+    verification: PENDING
+    origin: user_list
+    base_url: https://cscuk.fcdo.gov.uk/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: one_shanthi_road
+    name: 1 Shanthi Road
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bengaluru
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Studio/gallery/residency.
+    verification: PENDING
+    state: Karnataka
+    origin: user_list
+    base_url: https://1shanthiroad.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: tifa_working_studios
+    name: TIFA Working Studios
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Pune
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Studios/residency in Pune.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://tifaworkingstudios.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: what_about_art
+    name: What About Art?
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Artist-run space/programme.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://whataboutart.net/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: space_studio_vadodara
+    name: Space Studio
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Vadodara
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Studio/residency.
+    verification: PENDING
+    state: Gujarat
+    origin: user_list
+    base_url: https://spacestudio.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: pepper_house_kochi
+    name: Pepper House (Kochi)
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kochi
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Path on the KMB domain.
+    verification: PENDING
+    state: Kerala
+    origin: user_list
+    base_url: https://kochimuzirisbiennale.org/pepperhouse
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+    same_domain_as: kochi_biennale
+  - source_id: hh_art_spaces
+    name: HH Art Spaces
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Goa
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Residency/exhibition space.
+    verification: PENDING
+    state: Goa
+    origin: user_list
+    base_url: https://hhartspaces.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: kanoria_centre
+    name: Kanoria Centre for Arts
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Ahmedabad
+    career_level:
+      - intermediate
+      - standard
+    career_level_confidence: high
+    list_section: residencies
+    notes: Arts centre/residency.
+    verification: PENDING
+    state: Gujarat
+    origin: user_list
+    base_url: https://kanoriacentreforarts.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: utsha_foundation
+    name: Utsha Foundation
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bhubaneswar
+    career_level:
+      - intermediate
+      - standard
+    career_level_confidence: high
+    list_section: residencies
+    notes: Residency/foundation.
+    verification: PENDING
+    state: Odisha
+    origin: user_list
+    base_url: https://utshafoundation.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: apre_art_house
+    name: APRE Art House
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: funder
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - intermediate
+    career_level_confidence: medium
+    list_section: foundations
+    notes: Art House grants.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://aprearthouse.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: murthynayak
+    name: MurthyNAYAK Foundation
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: funder
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bengaluru
+    career_level:
+      - intermediate
+    career_level_confidence: medium
+    list_section: foundations
+    notes: Art foundation/grants.
+    verification: PENDING
+    state: Karnataka
+    origin: user_list
+    base_url: https://murthynayak.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: alkazi_foundation
+    name: Alkazi Foundation for the Arts
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: funder
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - intermediate
+      - standard
+    career_level_confidence: medium
+    list_section: foundations
+    notes: Arts foundation.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://alkazifoundation.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: mrinalini_mukherjee_foundation
+    name: Mrinalini Mukherjee Foundation
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: funder
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: medium
+    list_section: foundations
+    notes: Sculpture-focused foundation/grants.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://mrinalinimukherjeefoundation.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: piramal_art_foundation
+    name: Piramal Art Foundation
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: funder
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: medium
+    list_section: foundations
+    notes: Art foundation.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://piramalartfoundation.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: knma
+    name: Kiran Nadar Museum of Art
+    region: india
+    authority_tier: T0
+    source_type: museum
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: medium
+    list_section: foundations
+    notes: Museum; programmes and calls.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://knma.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: chitrakala_parishath
+    name: Chitrakala Parishath, Bengaluru
+    region: india
+    authority_tier: T1
+    source_type: university
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bengaluru
+    career_level:
+      - beginner
+    career_level_confidence: low
+    list_section: south
+    notes: Fine-arts college/gallery.
+    verification: PENDING
+    state: Karnataka
+    origin: user_list
+    base_url: https://ckp.edu.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: art_houz_chennai
+    name: Art Houz, Chennai
+    region: chennai
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    base_url: https://arthouz.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: kerala_lalithakala
+    name: Kerala Lalithakala Akademi
+    region: india
+    authority_tier: T0
+    source_type: government
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Thrissur
+    career_level:
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: "State academy: exhibitions, camps, awards."
+    verification: PENDING
+    state: Kerala
+    origin: user_list
+    base_url: https://keralalalithakala.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: apparao_galleries
+    name: Apparao Galleries, Chennai
+    region: chennai
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    base_url: https://apparaogalleries.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: triveni_kala_sangam
+    name: Triveni Kala Sangam, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery + art school.
+    verification: PENDING
+    state: Delhi
+    origin: web_search_seen
+    base_url: https://trivenikalasangam.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: jehangir_art_gallery
+    name: Jehangir Art Gallery, Mumbai
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery with open exhibition booking.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://jehangirartgallery.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: dhoomimal_gallery
+    name: Dhoomimal Gallery, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - beginner
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://dhoomimal.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: bombay_art_society
+    name: Bombay Art Society
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Annual art exhibition/awards.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://bombayartsociety.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: emami_art
+    name: Emami Art, Kolkata
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kolkata
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: West Bengal
+    origin: user_list
+    base_url: https://emamiart.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: latitude_28
+    name: Latitude 28, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://latitude28.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: experimenter
+    name: Experimenter, Kolkata
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kolkata
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: West Bengal
+    origin: user_list
+    base_url: https://experimenter.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: cima_kolkata
+    name: CIMA, Kolkata
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kolkata
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Centre of International Modern Art.
+    verification: PENDING
+    state: West Bengal
+    origin: web_search_seen
+    base_url: https://cimaartindia.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: project_88
+    name: Project 88, Mumbai
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Seen via /contact page in search.
+    verification: PENDING
+    state: Maharashtra
+    origin: web_search_seen
+    base_url: https://project88.in/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: bhau_daji_lad_museum
+    name: Dr Bhau Daji Lad Museum, Mumbai
+    region: india
+    authority_tier: T0
+    source_type: museum
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Domain from memory; unchecked.
+    verification: PENDING
+    state: Maharashtra
+    origin: assistant_candidate
+    base_url: https://bdlmuseum.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: gallery_espace
+    name: Gallery Espace, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://galleryespace.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: nature_morte
+    name: Nature Morte, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://naturemorte.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: vadehra_art_gallery
+    name: Vadehra Art Gallery, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://vadehraart.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: gallery_chemould
+    name: Gallery Chemould Prescott Road, Mumbai
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://gallerychemould.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: akar_prakar
+    name: Akar Prakar, Kolkata
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kolkata
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Domain from memory; unchecked.
+    verification: PENDING
+    state: West Bengal
+    origin: assistant_candidate
+    base_url: https://akarprakar.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: jhaveri_contemporary
+    name: Jhaveri Contemporary, Mumbai
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: nwe
+    notes: Gallery.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://jhavericontemporary.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: mojarto
+    name: Mojarto
+    region: india
+    authority_tier: T2
+    source_type: sales_platform
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: online
+    notes: Artist onboarding for online sales.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://mojarto.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: artisera
+    name: Artisera
+    region: india
+    authority_tier: T2
+    source_type: sales_platform
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: online
+    notes: Online gallery.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://artisera.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: tallenge
+    name: Tallenge
+    region: india
+    authority_tier: T2
+    source_type: sales_platform
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: online
+    notes: Art prints marketplace.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://tallenge.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: art_soul_life
+    name: Art Soul Life
+    region: india
+    authority_tier: T2
+    source_type: sales_platform
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: null
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: online
+    notes: Online art.
+    verification: PENDING
+    origin: user_list
+    base_url: https://artsoullife.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: art_chennai
+    name: Art Chennai
+    region: chennai
+    authority_tier: T2
+    source_type: sales_platform
+    channel_role: sales
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+      - intermediate
+    career_level_confidence: high
+    list_section: online
+    notes: "Chennai art platform: exhibitions/events; may list calls."
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    base_url: https://artchennai.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: google_arts_culture
+    name: Google Arts & Culture
+    region: international
+    authority_tier: T0
+    source_type: museum
+    channel_role: venue
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: GLOBAL
+    city: null
+    career_level:
+      - beginner
+      - intermediate
+    career_level_confidence: high
+    list_section: online
+    notes: Institution partner programme only.
+    verification: PENDING
+    origin: user_list
+    base_url: https://artsandculture.google.com/
+    enabled: false
+    disabled_reason: Content platform for institutions; no application calls.
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 85
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: artsy
+    name: Artsy
+    region: international
+    authority_tier: T2
+    source_type: sales_platform
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: GLOBAL
+    city: null
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: online
+    notes: Gallery marketplace.
+    verification: PENDING
+    origin: user_list
+    base_url: https://artsy.net/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: saffronart
+    name: Saffronart
+    region: india
+    authority_tier: T2
+    source_type: auction_house
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: online
+    notes: Auction house.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://saffronart.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: pundoles
+    name: Pundole's
+    region: india
+    authority_tier: T2
+    source_type: auction_house
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: online
+    notes: Auction house.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://pundoles.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: dag
+    name: DAG
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: online
+    notes: Gallery/auction-style.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://dagworld.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 2
+    max_pages_per_source: 40
+  - source_id: astaguru
+    name: AstaGuru
+    region: india
+    authority_tier: T2
+    source_type: auction_house
+    channel_role: sales
+    fine_arts_fit: LOW
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - standard
+    career_level_confidence: high
+    list_section: online
+    notes: Auction house.
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    base_url: https://astaguru.com/
+    enabled: false
+    disabled_reason: "Sales/auction channel: no deadline-based calls. Kept for the 'where to show/sell' directory view."
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 60
+    crawl_interval_minutes: 1440
+    crawl_depth: 1
+    max_pages_per_source: 40
+  - source_id: dastkari_haat_samiti
+    name: Dastkari Haat Samiti
+    region: india
+    authority_tier: T1
+    source_type: foundation
+    channel_role: organiser
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: crafts
+    notes: Craft bazaars/artisan calls; filter to ceramics/textile/sculpture.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    base_url: https://dastkarihaat.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 75
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: poompuhar_tnhdc
+    name: Poompuhar (TN Handicrafts Development Corp.)
+    region: chennai
+    authority_tier: T0
+    source_type: government
+    channel_role: organiser
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: crafts
+    notes: "Seen in search: tnhdc.poompuhar.com and poompuhar.com."
+    verification: PENDING
+    state: Tamil Nadu
+    origin: web_search_seen
+    base_url: https://tnhdc.poompuhar.com/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+  - source_id: crafts_council_of_india
+    name: Crafts Council of India
+    region: chennai
+    authority_tier: T1
+    source_type: foundation
+    channel_role: organiser
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: crafts
+    notes: HQ Chennai.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    base_url: https://craftscouncilofindia.org/
+    enabled: true
+    collection:
+      html: true
+      search: true
+      feed_probe: true
+      sitemap_probe: true
+      browser: false
+    priority: 100
+    crawl_interval_minutes: 720
+    crawl_depth: 2
+    max_pages_per_source: 60
+unresolved_sources:
+  - source_id: kala_ghoda_mumbai
+    name: Kala Ghoda / Mumbai artist-run spaces
+    region: india
+    authority_tier: T2
+    source_type: festival
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: residencies
+    notes: Kala Ghoda Arts Festival and artist-run spaces (needs discovery).
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: URL not given and not found by search; resolve via discovery.
+    discovery_queries:
+      - Kala Ghoda / Mumbai artist-run spaces official website
+      - Kala Ghoda / Mumbai artist-run spaces Mumbai artists open call
+      - Kala Ghoda / Mumbai artist-run spaces residency OR exhibition OR grant
+  - source_id: cholamandal_artists_village
+    name: Cholamandal Artists' Village
+    region: chennai
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Artists' commune near Chennai.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found by search (only Wikipedia/tourism pages).
+    discovery_queries:
+      - Cholamandal Artists' Village official website
+      - Cholamandal Artists' Village Chennai artists open call
+      - Cholamandal Artists' Village residency OR exhibition OR grant
+  - source_id: srishti_manipal
+    name: Srishti Manipal Institute of Art, Design & Technology
+    region: india
+    authority_tier: T1
+    source_type: university
+    channel_role: organiser
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bengaluru
+    career_level:
+      - beginner
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Art school; calls, residencies.
+    verification: PENDING
+    state: Karnataka
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official domain not confirmed.
+    discovery_queries:
+      - Srishti Manipal Institute of Art, Design & Technology official website
+      - Srishti Manipal Institute of Art, Design & Technology Bengaluru artists open call
+      - Srishti Manipal Institute of Art, Design & Technology residency OR exhibition OR grant
+  - source_id: kasauli_art_centre
+    name: Kasauli Art Centre
+    region: india
+    authority_tier: T1
+    source_type: residency
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kasauli
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: residencies
+    notes: Residency/workshop centre.
+    verification: PENDING
+    state: Himachal Pradesh
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found (only archive/history pages).
+    discovery_queries:
+      - Kasauli Art Centre official website
+      - Kasauli Art Centre Kasauli artists open call
+      - Kasauli Art Centre residency OR exhibition OR grant
+  - source_id: forum_art_gallery
+    name: Forum Art Gallery, Chennai
+    region: chennai
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found by search.
+    discovery_queries:
+      - Forum Art Gallery, Chennai official website
+      - Forum Art Gallery, Chennai Chennai artists open call
+      - Forum Art Gallery, Chennai residency OR exhibition OR grant
+  - source_id: gallery_veda
+    name: Gallery Veda, Chennai
+    region: chennai
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found (only third-party listings).
+    discovery_queries:
+      - Gallery Veda, Chennai official website
+      - Gallery Veda, Chennai Chennai artists open call
+      - Gallery Veda, Chennai residency OR exhibition OR grant
+  - source_id: cholamandal_gallery
+    name: Cholamandal Gallery, Chennai
+    region: chennai
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - beginner
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found.
+    discovery_queries:
+      - Cholamandal Gallery, Chennai official website
+      - Cholamandal Gallery, Chennai Chennai artists open call
+      - Cholamandal Gallery, Chennai residency OR exhibition OR grant
+  - source_id: venkatappa_art_gallery
+    name: Venkatappa Art Gallery, Bengaluru
+    region: india
+    authority_tier: T0
+    source_type: museum
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bengaluru
+    career_level:
+      - beginner
+    career_level_confidence: low
+    list_section: south
+    notes: Reopened after renovation (per Deccan Herald).
+    verification: PENDING
+    state: Karnataka
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: No standalone official site found (state museum department).
+    discovery_queries:
+      - Venkatappa Art Gallery, Bengaluru official website
+      - Venkatappa Art Gallery, Bengaluru Bengaluru artists open call
+      - Venkatappa Art Gallery, Bengaluru residency OR exhibition OR grant
+  - source_id: tn_eyal_isai_manram
+    name: Tamil Nadu Eyal Isai Nataka Manram / Ovia Nunkalai Kuzhu
+    region: chennai
+    authority_tier: T0
+    source_type: government
+    channel_role: organiser
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Chennai
+    career_level:
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: State arts council incl. fine-arts wing (Ovia Nunkalai Kuzhu).
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found; only an RTI handbook PDF surfaced (tn.gov.in).
+    discovery_queries:
+      - Tamil Nadu Eyal Isai Nataka Manram / Ovia Nunkalai Kuzhu official website
+      - Tamil Nadu Eyal Isai Nataka Manram / Ovia Nunkalai Kuzhu Chennai artists open call
+      - Tamil Nadu Eyal Isai Nataka Manram / Ovia Nunkalai Kuzhu residency OR exhibition OR grant
+  - source_id: state_gallery_art_hyderabad
+    name: State Gallery of Art, Hyderabad
+    region: india
+    authority_tier: T0
+    source_type: museum
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Hyderabad
+    career_level:
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: State gallery.
+    verification: PENDING
+    state: Telangana
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found.
+    discovery_queries:
+      - State Gallery of Art, Hyderabad official website
+      - State Gallery of Art, Hyderabad Hyderabad artists open call
+      - State Gallery of Art, Hyderabad residency OR exhibition OR grant
+  - source_id: kalakriti_art_gallery
+    name: Kalakriti Art Gallery, Hyderabad
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Hyderabad
+    career_level:
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Telangana
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found (only third-party listings).
+    discovery_queries:
+      - Kalakriti Art Gallery, Hyderabad official website
+      - Kalakriti Art Gallery, Hyderabad Hyderabad artists open call
+      - Kalakriti Art Gallery, Hyderabad residency OR exhibition OR grant
+  - source_id: gallery_sumukha
+    name: Gallery Sumukha, Bengaluru
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Bengaluru
+    career_level:
+      - intermediate
+    career_level_confidence: low
+    list_section: south
+    notes: Gallery.
+    verification: PENDING
+    state: Karnataka
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official domain not confirmed.
+    discovery_queries:
+      - Gallery Sumukha, Bengaluru official website
+      - Gallery Sumukha, Bengaluru Bengaluru artists open call
+      - Gallery Sumukha, Bengaluru residency OR exhibition OR grant
+  - source_id: aifacs
+    name: AIFACS, Delhi
+    region: india
+    authority_tier: T2
+    source_type: gallery
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: New Delhi
+    career_level:
+      - beginner
+    career_level_confidence: high
+    list_section: nwe
+    notes: All India Fine Arts & Crafts Society.
+    verification: PENDING
+    state: Delhi
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official site not found (only Wikipedia).
+    discovery_queries:
+      - AIFACS, Delhi official website
+      - AIFACS, Delhi New Delhi artists open call
+      - AIFACS, Delhi residency OR exhibition OR grant
+  - source_id: birla_academy
+    name: Birla Academy of Art and Culture, Kolkata
+    region: india
+    authority_tier: T0
+    source_type: museum
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Kolkata
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Academy/gallery.
+    verification: PENDING
+    state: West Bengal
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official domain not found by search.
+    discovery_queries:
+      - Birla Academy of Art and Culture, Kolkata official website
+      - Birla Academy of Art and Culture, Kolkata Kolkata artists open call
+      - Birla Academy of Art and Culture, Kolkata residency OR exhibition OR grant
+  - source_id: art_mumbai
+    name: Art Mumbai (fair)
+    region: india
+    authority_tier: T2
+    source_type: festival
+    channel_role: venue
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Mumbai
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: "Art fair; Ocula page seen: https://ocula.com/art-fairs/art-mumbai/"
+    verification: PENDING
+    state: Maharashtra
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official domain not found (only press/Ocula pages).
+    discovery_queries:
+      - Art Mumbai (fair) official website
+      - Art Mumbai (fair) Mumbai artists open call
+      - Art Mumbai (fair) residency OR exhibition OR grant
+  - source_id: jaipur_art_summit
+    name: Jaipur Art Summit
+    region: india
+    authority_tier: T2
+    source_type: festival
+    channel_role: organiser
+    fine_arts_fit: HIGH
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Jaipur
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: nwe
+    notes: Art summit.
+    verification: PENDING
+    state: Rajasthan
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official domain not found by search.
+    discovery_queries:
+      - Jaipur Art Summit official website
+      - Jaipur Art Summit Jaipur artists open call
+      - Jaipur Art Summit residency OR exhibition OR grant
+  - source_id: szcc_thanjavur
+    name: South Zone Cultural Centre (Thanjavur)
+    region: chennai
+    authority_tier: T0
+    source_type: government
+    channel_role: organiser
+    fine_arts_fit: MED
+    discovery_only: false
+    geo_basis: registry
+    country: IN
+    city: Thanjavur
+    career_level:
+      - intermediate
+    career_level_confidence: high
+    list_section: crafts
+    notes: Zonal Cultural Centre.
+    verification: PENDING
+    state: Tamil Nadu
+    origin: user_list
+    enabled: false
+    url_status: MISSING_NEEDS_DISCOVERY
+    why_not_enabled: Official domain not found (only listings on nvli.in / indiaculture.gov.in reports).
+    discovery_queries:
+      - South Zone Cultural Centre (Thanjavur) official website
+      - South Zone Cultural Centre (Thanjavur) Thanjavur artists open call
+      - South Zone Cultural Centre (Thanjavur) residency OR exhibition OR grant

@@ -1,0 +1,40 @@
+{
+  "location": {
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "country": "IN"
+  },
+  "nationality": "IN",
+  "age": 22,
+  "career_stage": "emerging",
+  "mediums": [
+    "painting",
+    "design",
+    "installation",
+    "sculpture",
+    "mixed_media"
+  ],
+  "themes": [
+    "technology",
+    "human perception",
+    "identity",
+    "space"
+  ],
+  "income_bracket": "low",
+  "max_application_fee_inr": 0,
+  "opportunity_types": [
+    "residency",
+    "fellowship",
+    "open_call",
+    "grant",
+    "exhibition"
+  ],
+  "preferred_regions": [
+    "chennai",
+    "india",
+    "asia",
+    "europe",
+    "global"
+  ],
+  "travel_ok": true
+}

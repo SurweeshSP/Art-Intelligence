@@ -1,0 +1,68 @@
+name: Daily Art Opportunity Crawler
+
+on:
+  schedule:
+    # Runs every day at 00:30 UTC (06:00 AM IST)
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+    # Allows manual trigger anytime from the Actions tab in GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  crawl:
+    name: Crawl & Refresh Opportunity Intelligence
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          elif [ -f "aoia/requirements.txt" ]; then
+            pip install -r aoia/requirements.txt
+          fi
+
+      - name: Run Crawler Pipeline
+        env:
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+        run: |
+          if [ -f "run_crawler.py" ]; then
+            python run_crawler.py
+          elif [ -f "aoia/scripts/crawl.py" ]; then
+            python aoia/scripts/crawl.py
+          else
+            python -c "import sys; sys.path.insert(0, 'aoia'); from aoia import pipeline; pipeline.run_pipeline()"
+          fi
+
+      - name: Commit and Push Updated Database
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage updated SQLite database files
+          git add aoia/aoia_data.db aoia_data.db 2>/dev/null || true
+
+          # Check if there are any database changes to commit
+          if git diff --staged --quiet; then
+            echo "No database changes detected. Everything is up to date."
+          else
+            echo "New opportunities found. Committing changes..."
+            git commit -m "chore(data): auto-update opportunity intelligence db [skip ci]"
+            git push
+            echo "Successfully pushed updated database! Streamlit Cloud will auto-redeploy."
+          fi

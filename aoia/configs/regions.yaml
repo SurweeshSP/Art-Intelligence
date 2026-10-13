@@ -1,0 +1,4 @@
+regions:
+  chennai: ["Chennai", "Tamil Nadu"]
+  india: ["India", "IN"]
+  international: ["Global", "International", "Online"]
